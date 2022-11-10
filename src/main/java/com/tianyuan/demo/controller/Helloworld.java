@@ -1,6 +1,7 @@
 package com.tianyuan.demo.controller;
 
 
+import com.tianyuan.demo.entity.User;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -11,8 +12,8 @@ public class Helloworld {
     }
 
     @GetMapping("/user/{id}")
-    public String user(@PathVariable int id) {
-        return "user" + id;
+    public User user(@PathVariable int id) {
+        return new User("Qwe",id);
     }
 
 }
