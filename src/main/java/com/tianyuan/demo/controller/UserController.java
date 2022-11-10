@@ -15,11 +15,11 @@ public class UserController {
     private UserMapper userMapper;
 
     @GetMapping("/user")
-    public String query() {
+    public List<User> query() {
 
         List<User> list = userMapper.find();
         System.out.println(list);
-        return "qaweq";
+        return list;
     }
 
 }
