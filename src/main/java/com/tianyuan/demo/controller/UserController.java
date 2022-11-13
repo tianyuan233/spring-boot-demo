@@ -1,5 +1,8 @@
 package com.tianyuan.demo.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tianyuan.demo.entity.User;
 import com.tianyuan.demo.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +20,15 @@ public class UserController {
     @GetMapping("/user")
     public List<User> query() {
 
-        List<User> list = userMapper.find();
-        System.out.println(list);
-        return list;
+        return userMapper.selectAllUser();
     }
 
+    @GetMapping("/user/page")
+    public IPage<User> page() {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<User>();
+        queryWrapper.eq("username","w");
+
+        Page<User> page = new Page<>(0,15);
+        return userMapper.selectPage(page,queryWrapper);
+    }
 }

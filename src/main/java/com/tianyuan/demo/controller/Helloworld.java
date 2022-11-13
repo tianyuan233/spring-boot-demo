@@ -12,8 +12,8 @@ public class Helloworld {
     }
 
     @GetMapping("/user/{id}")
-    public User user(@PathVariable int id) {
-        return new User("Qwe");
+    public String user(@PathVariable int id) {
+        return "Q_Q";
     }
 
 }
